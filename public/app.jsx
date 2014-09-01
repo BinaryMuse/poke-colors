@@ -64,13 +64,32 @@ var Application = React.createClass({
     );
   },
 
+  componentDidMount: function() {
+    var hammer = new Hammer(this.getDOMNode(), {
+      recognizers: [
+        [Hammer.Swipe, {direction: Hammer.DIRECTION_HORIZONTAL}]
+      ]
+    });
+    hammer.on("swipeleft", function(e) {
+      var num = this.state.pokenum;
+      this.setNewValue(num + 1);
+    }.bind(this));
+    hammer.on("swiperight", function(e) {
+      var num = this.state.pokenum;
+      this.setNewValue(num - 1);
+    }.bind(this));
+  },
+
   handleChange: function(e) {
-    var num = e.target.value;
+    this.setNewValue(e.target.value);
+  },
+
+  setNewValue: function(num) {
     this.setState({poketext: num});
     if (num && !isNaN(num)) {
-      var numeric = parseInt(e.target.value, 10);
+      var numeric = parseInt(num, 10);
       if (numeric > 0 && numeric <= 493) {
-        this.setState({pokenum: parseInt(e.target.value, 10)});
+        this.setState({pokenum: parseInt(num, 10)});
       }
     }
   },
