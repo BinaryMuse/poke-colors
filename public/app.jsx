@@ -55,7 +55,8 @@ var Application = React.createClass({
             <img src={this.pokeImg()} width="160" height="160" />
           </div>
           <div>
-            <input type="number" value={this.state.poketext} onChange={this.handleChange} />
+            <input type="number" value={this.state.poketext} onChange={this.handleChange}
+                   style={{fontSize: 20, width: 100, textAlign: "center"}}/>
           </div>
         </div>
         <ColorBar distribution={this.props.colors[this.state.pokenum - 1]} />
