@@ -36,7 +36,8 @@ var Application = React.createClass({
 
   getInitialState: function() {
     return {
-      pokenum: 1
+      pokenum: 1,
+      poketext: "1"
     };
   },
 
@@ -54,7 +55,7 @@ var Application = React.createClass({
             <img src={this.pokeImg()} width="80" height="80" />
           </div>
           <div>
-            <input type="number" value={this.state.pokenum} onChange={this.handleChange} />
+            <input type="number" value={this.state.poketext} onChange={this.handleChange} />
           </div>
         </div>
         <ColorBar distribution={this.props.colors[this.state.pokenum - 1]} />
@@ -64,6 +65,7 @@ var Application = React.createClass({
 
   handleChange: function(e) {
     var num = e.target.value;
+    this.setState({poketext: num});
     if (num && !isNaN(num)) {
       var numeric = parseInt(e.target.value, 10);
       if (numeric > 0 && numeric <= 493) {
