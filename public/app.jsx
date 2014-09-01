@@ -52,7 +52,7 @@ var Application = React.createClass({
       <div>
         <div style={style}>
           <div>
-            <img src={this.pokeImg()} width="80" height="80" />
+            <img src={this.pokeImg()} width="160" height="160" />
           </div>
           <div>
             <input type="number" value={this.state.poketext} onChange={this.handleChange} />
