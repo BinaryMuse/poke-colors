@@ -73,12 +73,12 @@ var Application = React.createClass({
   },
 
   pokeImg: function() {
-    return "/images/poke_" + (this.state.pokenum - 1) + ".png";
+    return "images/poke_" + (this.state.pokenum - 1) + ".png";
   }
 });
 
 var xhr = new XMLHttpRequest();
-xhr.open("GET", "/meta.json");
+xhr.open("GET", "meta.json");
 xhr.onload = function(e) {
   var data = JSON.parse(this.response);
   React.renderComponent(<Application colors={data} />, document.getElementById("app"));
